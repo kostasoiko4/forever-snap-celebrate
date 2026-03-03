@@ -57,6 +57,11 @@ const RSVPForm = () => {
     );
   }
 
+  const handleCopy = () => {
+    navigator.clipboard.writeText('GR8802601250000830202031766')
+    alert('Το IBAN αντιγράφηκε!')
+  }
+
   return (
     <section className="py-16 md:py-24 px-6" id="rsvp">
       <motion.div
@@ -159,6 +164,19 @@ const RSVPForm = () => {
             {loading ? "Αποστολή..." : "Αποστολή RSVP"}
           </button>
         </form>
+
+        <div className="text-center mt-10">
+          <p className="font-body text-xs tracking-[0.25em] text-muted-foreground mb-4">
+            Προαιρετική λίστα γάμου
+          </p>
+          <a 
+            onClick={handleCopy} 
+            className="text-primary hover:underline"
+            style={{cursor: 'pointer'}}
+          >
+            GR8802601250000830202031766
+          </a> 
+        </div>
       </motion.div>
     </section>
   );
