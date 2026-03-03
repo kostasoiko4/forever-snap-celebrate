@@ -5,6 +5,7 @@ import EventDetails from "@/components/EventDetails";
 import RSVPForm from "@/components/RSVPForm";
 import PhotoGallery from "@/components/PhotoGallery";
 import WeddingFooter from "@/components/WeddingFooter";
+import AppFooter from "@/components/AppFooter";
 
 const Index = () => {
   return (
@@ -16,6 +17,7 @@ const Index = () => {
       <RSVPForm />
       <PhotoGallery />
       <WeddingFooter />
+      <AppFooter />
     </div>
   );
 };

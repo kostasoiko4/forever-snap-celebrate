@@ -29,10 +29,10 @@ const CountdownTimer = () => {
   }, []);
 
   const units = [
-    { label: "Days", value: timeLeft.days },
-    { label: "Hours", value: timeLeft.hours },
-    { label: "Minutes", value: timeLeft.minutes },
-    { label: "Seconds", value: timeLeft.seconds },
+    { label: "Μέρες", value: timeLeft.days },
+    { label: "Ώρες", value: timeLeft.hours },
+    { label: "Λεπτά", value: timeLeft.minutes },
+    { label: "Δευτερόλεπτα", value: timeLeft.seconds },
   ];
 
   return (
@@ -44,8 +44,8 @@ const CountdownTimer = () => {
         transition={{ duration: 0.8 }}
         className="max-w-2xl mx-auto px-6"
       >
-        <p className="text-center font-body text-xs tracking-[0.25em] uppercase text-muted-foreground mb-8">
-          Counting down to our big day
+        <p className="text-center font-body text-xs tracking-[0.25em] text-muted-foreground mb-8">
+          Μετράμε αντίστροφα για την μεγάλη μας μέρα!
         </p>
         <div className="flex justify-center gap-6 md:gap-10">
           {units.map((unit) => (

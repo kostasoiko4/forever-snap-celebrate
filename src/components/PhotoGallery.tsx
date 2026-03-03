@@ -65,14 +65,14 @@ const PhotoGallery = () => {
         className="max-w-5xl mx-auto"
       >
         <div className="text-center mb-10">
-          <p className="font-body text-xs tracking-[0.25em] uppercase text-muted-foreground mb-4">
-            Relive the Moments
+          <p className="font-body text-xs tracking-[0.25em] text-muted-foreground mb-4">
+            Ζήστε την στιγμή
           </p>
           <h2 className="text-3xl md:text-4xl font-serif text-foreground mb-4">
-            Photobooth & Memories
+            Photobooth
           </h2>
           <p className="font-body text-sm text-muted-foreground max-w-md mx-auto">
-            Browse and download photos from our celebration. New photos will appear here after the event!
+            Δείτε και κατεβάστε τις φωτογραφίες σας. Νέες φωτογραφίες θα προστήθεντε εδώ κατα την διάρκεια της δεξίωσης!
           </p>
         </div>
 
@@ -87,9 +87,9 @@ const PhotoGallery = () => {
             className="text-center py-16 bg-card rounded-lg border border-border"
           >
             <ImageIcon size={48} className="mx-auto text-muted-foreground/40 mb-4" />
-            <p className="font-serif text-lg text-foreground mb-2">Photos Coming Soon</p>
+            <p className="font-serif text-lg text-foreground mb-2">Οι φωτογραφίες έρχονται σύντομα</p>
             <p className="font-body text-sm text-muted-foreground">
-              Check back after the wedding to download all the memories!
+              Ελέγξτε ξανά σε λίγο, ο φωτογράφος θέλει λίγη ώρα να επεξεργαστεί τις φωτογραφίες σας!
             </p>
           </motion.div>
         ) : (
@@ -100,7 +100,7 @@ const PhotoGallery = () => {
                 className="inline-flex items-center gap-2 px-6 py-2.5 bg-primary text-primary-foreground rounded-full font-body text-xs tracking-wide uppercase hover:bg-sage-dark transition-colors"
               >
                 <Download size={16} />
-                Download All ({photos.length})
+                Λήψη όλων ({photos.length})
               </button>
             </div>
 

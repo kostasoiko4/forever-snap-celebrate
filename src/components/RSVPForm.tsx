@@ -67,8 +67,8 @@ const RSVPForm = () => {
         className="max-w-md mx-auto"
       >
         <div className="text-center mb-10">
-          <p className="font-body text-xs tracking-[0.25em] uppercase text-muted-foreground mb-4">
-            Kindly Respond
+          <p className="font-body text-xs tracking-[0.25em] text-muted-foreground mb-4">
+            Εσείς θα παρευρεθείτε;
           </p>
           <h2 className="text-3xl md:text-4xl font-serif text-foreground">RSVP</h2>
         </div>
@@ -76,26 +76,26 @@ const RSVPForm = () => {
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
             <label className="block font-body text-xs tracking-wide uppercase text-muted-foreground mb-2">
-              Your Name
+              Όνομα
             </label>
             <input
               type="text"
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               className="w-full px-4 py-3 bg-card border border-border rounded-lg font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-              placeholder="First & Last Name"
+              placeholder="Ονοματεπώνυμο"
               maxLength={100}
             />
           </div>
 
           <div>
             <label className="block font-body text-xs tracking-wide uppercase text-muted-foreground mb-2">
-              Will you attend?
+              Θα παρευρεθείτε;
             </label>
             <div className="flex gap-4">
               {[
-                { value: "yes", label: "Joyfully Accept" },
-                { value: "no", label: "Regretfully Decline" },
+                { value: "yes", label: "Αποδέχομαι" },
+                { value: "no", label: "Αρνούμαι" },
               ].map((opt) => (
                 <label
                   key={opt.value}
@@ -122,7 +122,7 @@ const RSVPForm = () => {
           {form.attending === "yes" && (
             <div>
               <label className="block font-body text-xs tracking-wide uppercase text-muted-foreground mb-2">
-                Number of Guests
+                Αριθμός καλεσμένων
               </label>
               <select
                 value={form.guests}
@@ -130,7 +130,7 @@ const RSVPForm = () => {
                 className="w-full px-4 py-3 bg-card border border-border rounded-lg font-body text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
               >
                 {[1, 2, 3, 4].map((n) => (
-                  <option key={n} value={n}>{n} {n === 1 ? "guest" : "guests"}</option>
+                  <option key={n} value={n}>{n} {n === 1 ? "καλεσμένος" : "καλεσμένοι"}</option>
                 ))}
               </select>
             </div>
@@ -138,14 +138,14 @@ const RSVPForm = () => {
 
           <div>
             <label className="block font-body text-xs tracking-wide uppercase text-muted-foreground mb-2">
-              Dietary Restrictions
+              Διατροφικοί Περιορισμοί
             </label>
             <textarea
               value={form.dietary}
               onChange={(e) => setForm({ ...form, dietary: e.target.value })}
               className="w-full px-4 py-3 bg-card border border-border rounded-lg font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none"
               rows={3}
-              placeholder="Any allergies or dietary needs..."
+              placeholder="Αλλεργίες ή άλλες ανάγκες..."
               maxLength={500}
             />
           </div>
@@ -156,7 +156,7 @@ const RSVPForm = () => {
             className="w-full flex items-center justify-center gap-2 py-3 bg-primary text-primary-foreground rounded-full font-body text-sm tracking-wide uppercase hover:bg-sage-dark transition-colors disabled:opacity-50"
           >
             <Send size={16} />
-            {loading ? "Submitting..." : "Submit RSVP"}
+            {loading ? "Αποστολή..." : "Αποστολή RSVP"}
           </button>
         </form>
       </motion.div>

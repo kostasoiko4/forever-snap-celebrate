@@ -21,15 +21,15 @@ const HeroSection = () => {
         transition={{ duration: 1.2, ease: "easeOut" }}
         className="relative z-10 text-center px-6"
       >
-        <p className="font-body text-sm tracking-[0.3em] uppercase text-cream/80 mb-4">
-          We are getting married!
+        <p className="font-body text-sm tracking-[0.3em] text-cream/80 mb-4">
+          Παντρευόμαστε!
         </p>
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-medium text-cream mb-6 leading-tight">
-          Sarah & James
+          Άννα & Μελέτης
         </h1>
         <div className="w-16 h-px bg-gold mx-auto mb-6" />
         <p className="font-body text-lg md:text-xl text-cream/90 tracking-wide">
-          September 14, 2026
+          14 Σεπτεμβρίου 2026
         </p>
 
         <motion.button
@@ -39,7 +39,7 @@ const HeroSection = () => {
           className="mt-10 inline-flex items-center gap-2 px-8 py-3 bg-primary/90 text-primary-foreground rounded-full font-body text-sm tracking-wide uppercase hover:bg-primary transition-colors backdrop-blur-sm"
         >
           <Camera size={18} />
-          Photobooth & Memories
+          Photobooth
         </motion.button>
       </motion.div>
 

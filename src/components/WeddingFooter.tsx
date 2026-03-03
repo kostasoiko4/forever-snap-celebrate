@@ -6,22 +6,22 @@ const WeddingFooter = () => {
       <div className="max-w-md mx-auto">
         <div className="w-10 h-px bg-primary mx-auto mb-8" />
         <p className="font-body text-sm text-muted-foreground mb-4">
-          Got questions? Reach out to us at{" "}
-          <a href="mailto:sarah.james@wedding.com" className="text-primary hover:underline">
-            sarah.james@wedding.com
+          Έχετε ερωτήσεις; Επικοινωνήστε μαζί μας{" "}
+          <a href="mailto:annaoikonomou@gmail.com" className="text-primary hover:underline">
+            annaoikonomou@gmail.com
           </a>{" "}
-          or{" "}
-          <a href="tel:+15551234567" className="text-primary hover:underline">
-            (555) 123-4567
+          ή{" "}
+          <a href="tel:+30697 180 1118" className="text-primary hover:underline">
+            697 180 1118
           </a>
         </p>
         <p className="font-serif text-lg text-foreground mb-6">
-          We can&apos;t wait to celebrate with you!
+          Ανυπομονούμε να σας δούμε!
         </p>
         <Heart size={18} className="mx-auto text-blush-dark" fill="currentColor" />
-        <p className="mt-6 font-body text-xs text-muted-foreground/60 tracking-wide">
-          Sarah & James • September 14, 2026
-        </p>
+        {/* <p className="mt-6 font-body text-xs text-muted-foreground/60 tracking-wide">
+          Άννα & Μελέτης • 14 Σεπτεμβρίου 2026
+        </p> */}
       </div>
     </footer>
   );
