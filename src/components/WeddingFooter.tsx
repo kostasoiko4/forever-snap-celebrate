@@ -1,4 +1,5 @@
 import { Heart } from "lucide-react";
+import logo from "@/assets/logo-icon1.png"
 
 const WeddingFooter = () => {
   return (
@@ -18,7 +19,8 @@ const WeddingFooter = () => {
         <p className="font-serif text-lg text-foreground mb-6">
           Ανυπομονούμε να σας δούμε!
         </p>
-        <Heart size={18} className="mx-auto text-blush-dark" fill="currentColor" />
+        {/* <Heart size={18} className="mx-auto text-blush-dark" fill="currentColor" /> */}
+        <img src={logo} style={{width: '10rem', margin: '0 auto'}}/>
         {/* <p className="mt-6 font-body text-xs text-muted-foreground/60 tracking-wide">
           Άννα & Μελέτης • 14 Σεπτεμβρίου 2026
         </p> */}

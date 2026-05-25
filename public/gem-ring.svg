@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="24"
+     height="24"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="url(#gold-gradient)"
+     stroke-width="2"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+  <style>
+    #gold-start {
+      stop-color: #8f681c;
+    }
+
+    #gold-middle {
+      stop-color: #d6a842;
+    }
+
+    #gold-end {
+      stop-color: #f7df8e;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      #gold-start {
+        stop-color: #c9952f;
+      }
+
+      #gold-middle {
+        stop-color: #f0c75e;
+      }
+
+      #gold-end {
+        stop-color: #fff0b3;
+      }
+    }
+  </style>
+
+  <defs>
+    <linearGradient id="gold-gradient"
+                    x1="4"
+                    y1="2"
+                    x2="20"
+                    y2="22"
+                    gradientUnits="userSpaceOnUse">
+      <stop id="gold-start" offset="0%" />
+      <stop id="gold-middle" offset="50%" />
+      <stop id="gold-end" offset="100%" />
+    </linearGradient>
+  </defs>
+
+  <path d="M13.2 8.1 16 4.4 14.4 2H9.6L8 4.4l2.8 3.7" />
+  <circle cx="12" cy="15" r="7" />
+</svg>

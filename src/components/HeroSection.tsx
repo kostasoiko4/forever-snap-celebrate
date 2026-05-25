@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Camera } from "lucide-react";
 import heroImage from "@/assets/hero-wedding.jpg";
+import logo from "@/assets/logo-icon1.png"
 
 const HeroSection = () => {
   const scrollToPhotobooth = () => {
@@ -21,6 +22,8 @@ const HeroSection = () => {
         transition={{ duration: 1.2, ease: "easeOut" }}
         className="relative z-10 text-center px-6"
       >
+        <img src={logo} style={{width: '10rem', margin: '0 auto'}}/>
+
         <p className="font-body text-sm tracking-[0.3em] text-cream/80 mb-4">
           Παντρευόμαστε!
         </p>
