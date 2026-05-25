@@ -75,20 +75,20 @@ const RSVPForm = () => {
           <p className="font-body text-xs tracking-[0.25em] text-muted-foreground mb-4">
             Εσείς θα παρευρεθείτε;
           </p>
-          <h2 className="text-3xl md:text-4xl font-serif text-foreground">RSVP</h2>
+          <h2 className="text-3xl md:text-4xl font-serif text-foreground">Θα χαρούμε να σας δούμε!</h2>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
             <label className="block font-body text-xs tracking-wide uppercase text-muted-foreground mb-2">
-              Όνομα
+              Όνομα Οικογενείας
             </label>
             <input
               type="text"
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               className="w-full px-4 py-3 bg-card border border-border rounded-lg font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-              placeholder="Ονοματεπώνυμο"
+              placeholder="Επώνυμο"
               maxLength={100}
             />
           </div>
@@ -99,8 +99,8 @@ const RSVPForm = () => {
             </label>
             <div className="flex gap-4">
               {[
-                { value: "yes", label: "Αποδέχομαι" },
-                { value: "no", label: "Αρνούμαι" },
+                { value: "yes", label: "Θα είμαστε εκεί!" },
+                { value: "no", label: "Δυστηχώς όχι" },
               ].map((opt) => (
                 <label
                   key={opt.value}
@@ -134,7 +134,7 @@ const RSVPForm = () => {
                 onChange={(e) => setForm({ ...form, guests: e.target.value })}
                 className="w-full px-4 py-3 bg-card border border-border rounded-lg font-body text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
               >
-                {[1, 2, 3, 4].map((n) => (
+                {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
                   <option key={n} value={n}>{n} {n === 1 ? "καλεσμένος" : "καλεσμένοι"}</option>
                 ))}
               </select>
@@ -161,7 +161,7 @@ const RSVPForm = () => {
             className="w-full flex items-center justify-center gap-2 py-3 bg-primary text-primary-foreground rounded-full font-body text-sm tracking-wide uppercase hover:bg-sage-dark transition-colors disabled:opacity-50"
           >
             <Send size={16} />
-            {loading ? "Αποστολή..." : "Αποστολή RSVP"}
+            {loading ? "Αποστολή..." : "Αποστολή Παρουσιολογίου"}
           </button>
         </form>
 
@@ -174,7 +174,7 @@ const RSVPForm = () => {
             className="text-primary hover:underline"
             style={{cursor: 'pointer'}}
           >
-            GR8802601250000830202031766
+            GR2001408800880002310026104
           </a> 
         </div>
       </motion.div>

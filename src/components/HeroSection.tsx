@@ -29,7 +29,7 @@ const HeroSection = () => {
         </h1>
         <div className="w-16 h-px bg-gold mx-auto mb-6" />
         <p className="font-body text-lg md:text-xl text-cream/90 tracking-wide">
-          14 Σεπτεμβρίου 2026
+          12 Σεπτεμβρίου 2026
         </p>
 
         <motion.button

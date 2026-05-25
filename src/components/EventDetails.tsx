@@ -63,10 +63,10 @@ const EventDetails = () => {
           <EventCard
             icon={<Church size={22} />}
             title="Η τελετή"
-            time="17.00"
-            venue="Ιερός ναός Αγίου Φανουρίου"
+            time="18.00"
+            venue="Ιερός ναός Αγίου Θεράποντα"
             address="Κιλκίς 611 00"
-            mapsUrl="https://www.google.com/maps/dir//%CE%86%CE%B3%CE%B9%CE%BF%CF%82+%CE%A6%CE%B1%CE%BD%CE%BF%CF%8D%CF%81%CE%B9%CE%BF%CF%82,+Kilkis+611+00/@40.9959496,22.8639114,3281m/data=!3m1!1e3!4m18!1m8!3m7!1s0x14a9c594ba4f2f85:0xf833fa5495474a21!2zzobOs865zr_PgiDOps6xzr3Ov8-Nz4HOuc6_z4I!8m2!3d40.997872!4d22.8766733!15sChPOuc61z4HOv8-CIM69zrHOv8-CWhUiE865zrXPgc6_z4Mgzr3Osc6_z4OSARVncmVla19vcnRob2RveF9jaHVyY2iaASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVTnVOVGhsYjBSUkVBReABAPoBBAgAEBs!16s%2Fg%2F11pf3fz7s3!4m8!1m0!1m5!1m1!1s0x14a9c594ba4f2f85:0xf833fa5495474a21!2m2!1d22.8767277!2d40.9978747!3e0?entry=ttu&g_ep=EgoyMDI2MDMwMS4xIKXMDSoASAFQAw%3D%3D"
+            mapsUrl="https://www.google.com/maps/dir//Saint+Therapontas,+%CE%A0%CE%B1%CF%80%CE%B1%CE%B3%CE%B9%CE%B1%CE%BD%CE%BD%CE%AC%CE%BA%CE%BF%CF%85,+%CE%94%CE%B7%CE%BC%CE%AC%CF%81%CF%87%CE%BF%CF%85+%CE%9D%CE%AF%CE%BA%CE%BF%CF%85+%CE%91%CE%B3%CE%B3%CE%B5%CE%BB%CE%AF%CE%B4%CE%B7+%CE%B3%CF%89%CE%BD%CE%AF%CE%B1,+Kilkis+611+00/@41.0031237,22.8773862,17z/data=!4m17!1m7!3m6!1s0x14a9c58d65060c99:0x67030625a56b1681!2sSaint+Therapontas!8m2!3d41.0031197!4d22.8799611!16s%2Fg%2F1pwfb66c_!4m8!1m0!1m5!1m1!1s0x14a9c58d65060c99:0x67030625a56b1681!2m2!1d22.8800267!2d41.0031187!3e0?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
             delay={0.1}
           />
           <EventCard

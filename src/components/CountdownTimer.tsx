@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const WEDDING_DATE = new Date("2026-09-14T17:00:00").getTime();
+const WEDDING_DATE = new Date("2026-09-12T18:00:00").getTime();
 
 interface TimeLeft {
   days: number;

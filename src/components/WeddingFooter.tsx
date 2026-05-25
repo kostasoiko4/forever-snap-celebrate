@@ -8,7 +8,7 @@ const WeddingFooter = () => {
         <p className="font-body text-sm text-muted-foreground mb-4">
           Έχετε ερωτήσεις; Επικοινωνήστε μαζί μας{" "}
           <a href="mailto:annaoikonomou@gmail.com" className="text-primary hover:underline">
-            annaoikonomou@gmail.com
+            annaoikonomou@hotmail.com
           </a>{" "}
           ή{" "}
           <a href="tel:+30697 180 1118" className="text-primary hover:underline">
