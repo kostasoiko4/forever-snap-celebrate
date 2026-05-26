@@ -18,7 +18,7 @@ const RSVPForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name.trim()) {
-      toast({ title: "Please enter your name", variant: "destructive" });
+      toast({ title: "Συμπληρώστε το όνομα σας", variant: "destructive" });
       return;
     }
     setLoading(true);
@@ -31,9 +31,9 @@ const RSVPForm = () => {
       });
       if (error) throw error;
       setSubmitted(true);
-      toast({ title: "RSVP submitted! Thank you ❤️" });
+      toast({ title: "Η φόρμα στάλθηκε! Σας ευχαριστούμε ❤️" });
     } catch {
-      toast({ title: "Something went wrong. Please try again.", variant: "destructive" });
+      toast({ title: "Κάτι πήγε λάθος. Προσπαθήστε ξανά αργότερα.", variant: "destructive" });
     } finally {
       setLoading(false);
     }
@@ -50,7 +50,7 @@ const RSVPForm = () => {
           <p className="text-5xl mb-4">💌</p>
           <h2 className="text-2xl font-serif text-foreground mb-3">Thank You!</h2>
           <p className="font-body text-muted-foreground">
-            Your RSVP has been received. We can&apos;t wait to see you!
+            Η φόρμα σας έχει σταλεί με επιτυχία. Ευχαριστούμε για την απάντησή σας!
           </p>
         </motion.div>
       </section>
@@ -58,7 +58,7 @@ const RSVPForm = () => {
   }
 
   const handleCopy = () => {
-    navigator.clipboard.writeText('GR8802601250000830202031766')
+    navigator.clipboard.writeText('GR2001408800880002310026104')
     alert('Το IBAN αντιγράφηκε!')
   }
 
@@ -125,35 +125,37 @@ const RSVPForm = () => {
           </div>
 
           {form.attending === "yes" && (
-            <div>
-              <label className="block font-body text-xs tracking-wide uppercase text-muted-foreground mb-2">
-                Αριθμός καλεσμένων
-              </label>
-              <select
-                value={form.guests}
-                onChange={(e) => setForm({ ...form, guests: e.target.value })}
-                className="w-full px-4 py-3 bg-card border border-border rounded-lg font-body text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
-              >
-                {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
-                  <option key={n} value={n}>{n} {n === 1 ? "καλεσμένος" : "καλεσμένοι"}</option>
-                ))}
-              </select>
-            </div>
-          )}
+            <>
+              <div>
+                <label className="block font-body text-xs tracking-wide uppercase text-muted-foreground mb-2">
+                  Αριθμός καλεσμένων
+                </label>
+                <select
+                  value={form.guests}
+                  onChange={(e) => setForm({ ...form, guests: e.target.value })}
+                  className="w-full px-4 py-3 bg-card border border-border rounded-lg font-body text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                >
+                  {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+                    <option key={n} value={n}>{n} {n === 1 ? "καλεσμένος" : "καλεσμένοι"}</option>
+                  ))}
+                </select>
+              </div>
 
-          <div>
-            <label className="block font-body text-xs tracking-wide uppercase text-muted-foreground mb-2">
-              Διατροφικοί Περιορισμοί
-            </label>
-            <textarea
-              value={form.dietary}
-              onChange={(e) => setForm({ ...form, dietary: e.target.value })}
-              className="w-full px-4 py-3 bg-card border border-border rounded-lg font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none"
-              rows={3}
-              placeholder="Αλλεργίες ή άλλες ανάγκες..."
-              maxLength={500}
-            />
-          </div>
+              <div>
+                <label className="block font-body text-xs tracking-wide uppercase text-muted-foreground mb-2">
+                  Διατροφικοί Περιορισμοί
+                </label>
+                <textarea
+                  value={form.dietary}
+                  onChange={(e) => setForm({ ...form, dietary: e.target.value })}
+                  className="w-full px-4 py-3 bg-card border border-border rounded-lg font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none"
+                  rows={3}
+                  placeholder="Αλλεργίες ή άλλες ανάγκες..."
+                  maxLength={500}
+                />
+              </div>
+            </>
+          )}
 
           <button
             type="submit"
