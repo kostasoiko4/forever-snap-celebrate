@@ -37,7 +37,6 @@ const Admin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [authLoading, setAuthLoading] = useState(false);
-  const [isSignUp, setIsSignUp] = useState(false);
 
   const [rsvps, setRsvps] = useState<Rsvp[]>([]);
   const [photos, setPhotos] = useState<PhotoFile[]>([]);
@@ -110,18 +109,9 @@ const Admin = () => {
     e.preventDefault();
     setAuthLoading(true);
     try {
-      if (isSignUp) {
-        const { error } = await supabase.auth.signUp({
-          email,
-          password,
-          options: { emailRedirectTo: `${window.location.origin}/admin` },
-        });
-        if (error) throw error;
-        toast.success("Account created. If email confirmation is on, check your inbox.");
-      } else {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error) throw error;
-      }
+      const loginEmail = email.includes("@") ? email : "admin@admin.com";
+      const { error } = await supabase.auth.signInWithPassword({ email: loginEmail, password });
+      if (error) throw error;
     } catch (err) {
       const e = err as Error;
       toast.error(e.message);
@@ -191,12 +181,19 @@ const Admin = () => {
         <div className="w-full max-w-sm bg-card border border-border rounded-lg p-8 shadow-sm">
           <h1 className="font-serif text-2xl text-center mb-1">Admin</h1>
           <p className="text-center text-sm text-muted-foreground mb-6">
-            {isSignUp ? "Create admin account" : "Sign in to continue"}
+            Sign in to continue
           </p>
           <form onSubmit={handleAuth} className="space-y-4">
             <div>
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
+              <Label htmlFor="email">Username</Label>
+              <Input
+                id="email"
+                type="text"
+                required
+                placeholder="admin"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
             <div>
               <Label htmlFor="password">Password</Label>
@@ -204,22 +201,15 @@ const Admin = () => {
                 id="password"
                 type="password"
                 required
-                minLength={6}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <Button type="submit" className="w-full" disabled={authLoading}>
               {authLoading && <Loader2 className="animate-spin mr-2 h-4 w-4" />}
-              {isSignUp ? "Sign up" : "Sign in"}
+              Sign in
             </Button>
           </form>
-          <button
-            onClick={() => setIsSignUp(!isSignUp)}
-            className="w-full text-center text-xs text-muted-foreground mt-4 hover:text-foreground"
-          >
-            {isSignUp ? "Already have an account? Sign in" : "Need to create one? Sign up"}
-          </button>
         </div>
       </div>
     );
