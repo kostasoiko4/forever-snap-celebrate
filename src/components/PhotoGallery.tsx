@@ -1,16 +1,27 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Download, Image as ImageIcon } from "lucide-react";
+import { Download, Image as ImageIcon, Expand } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 interface PhotoItem {
   name: string;
   url: string;
 }
 
+const PREVIEW_LIMIT = 6;
+
 const PhotoGallery = () => {
   const [photos, setPhotos] = useState<PhotoItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchPhotos = async () => {
@@ -30,7 +41,7 @@ const PhotoGallery = () => {
 
         setPhotos(photoItems);
       } catch {
-        // Storage bucket may not exist yet — show empty state
+        // empty state
       } finally {
         setLoading(false);
       }
@@ -55,6 +66,8 @@ const PhotoGallery = () => {
     }
   };
 
+  const previewPhotos = photos.slice(0, PREVIEW_LIMIT);
+
   return (
     <section id="photobooth" className="py-16 md:py-24 px-6 bg-secondary">
       <motion.div
@@ -68,9 +81,7 @@ const PhotoGallery = () => {
           <p className="font-body text-xs tracking-[0.25em] text-muted-foreground mb-4">
             Ζήστε την στιγμή
           </p>
-          <h2 className="text-3xl md:text-4xl font-serif text-foreground mb-4">
-            Photobooth
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-serif text-foreground mb-4">Photobooth</h2>
           <p className="font-body text-sm text-muted-foreground max-w-md mx-auto">
             Δείτε και κατεβάστε τις φωτογραφίες σας. Νέες φωτογραφίες θα προστήθεντε εδώ κατα την διάρκεια της δεξίωσης!
           </p>
@@ -94,44 +105,79 @@ const PhotoGallery = () => {
           </motion.div>
         ) : (
           <>
-            <div className="flex justify-center mb-8">
+            <Carousel opts={{ align: "start", loop: previewPhotos.length > 1 }} className="px-10">
+              <CarouselContent>
+                {previewPhotos.map((photo) => (
+                  <CarouselItem key={photo.name} className="basis-full sm:basis-1/2 md:basis-1/3">
+                    <button
+                      onClick={() => setModalOpen(true)}
+                      className="relative group block w-full aspect-[3/4] rounded-lg overflow-hidden"
+                    >
+                      <img
+                        src={photo.url}
+                        alt={photo.name}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/30 transition-colors flex items-center justify-center">
+                        <Expand
+                          size={28}
+                          className="text-background opacity-0 group-hover:opacity-100 transition-opacity"
+                        />
+                      </div>
+                    </button>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
+
+            <div className="flex flex-wrap justify-center gap-3 mt-8">
               <button
-                onClick={handleDownloadAll}
+                onClick={() => setModalOpen(true)}
                 className="inline-flex items-center gap-2 px-6 py-2.5 bg-primary text-primary-foreground rounded-full font-body text-xs tracking-wide uppercase hover:bg-sage-dark transition-colors"
               >
-                <Download size={16} />
-                Λήψη όλων ({photos.length})
+                <Expand size={16} />
+                Δείτε όλες ({photos.length})
               </button>
-            </div>
-
-            <div className="columns-2 md:columns-3 gap-4 space-y-4">
-              {photos.map((photo, index) => (
-                <motion.div
-                  key={photo.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
-                  className="relative group break-inside-avoid rounded-lg overflow-hidden"
-                >
-                  <img
-                    src={photo.url}
-                    alt={photo.name}
-                    className="w-full rounded-lg"
-                    loading="lazy"
-                  />
-                  <button
-                    onClick={() => handleDownload(photo)}
-                    className="absolute bottom-3 right-3 p-2 bg-foreground/70 text-background rounded-full opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm"
-                  >
-                    <Download size={16} />
-                  </button>
-                </motion.div>
-              ))}
+              <button
+                onClick={handleDownloadAll}
+                className="inline-flex items-center gap-2 px-6 py-2.5 border border-primary text-primary rounded-full font-body text-xs tracking-wide uppercase hover:bg-primary/5 transition-colors"
+              >
+                <Download size={16} />
+                Λήψη όλων
+              </button>
             </div>
           </>
         )}
       </motion.div>
+
+      <Dialog open={modalOpen} onOpenChange={setModalOpen}>
+        <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto p-6">
+          <div className="mb-4">
+            <h3 className="font-serif text-2xl">Όλες οι φωτογραφίες</h3>
+            <p className="text-sm text-muted-foreground">{photos.length} φωτογραφίες</p>
+          </div>
+          <div className="columns-2 md:columns-3 gap-4 space-y-4">
+            {photos.map((photo) => (
+              <div
+                key={photo.name}
+                className="relative group break-inside-avoid rounded-lg overflow-hidden"
+              >
+                <img src={photo.url} alt={photo.name} className="w-full rounded-lg" loading="lazy" />
+                <button
+                  onClick={() => handleDownload(photo)}
+                  className="absolute bottom-3 right-3 p-2 bg-foreground/70 text-background rounded-full opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm"
+                  aria-label="Download photo"
+                >
+                  <Download size={16} />
+                </button>
+              </div>
+            ))}
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
